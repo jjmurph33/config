@@ -1,0 +1,8 @@
+[user]
+	email = 104844163+jjmurph33@users.noreply.github.com
+	name = jjmurph33
+[core]
+	editor = vim
+	pager = less -FRX
+[init]
+	defaultBranch = master
