@@ -73,9 +73,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$PATH:/home/john/.local/bin"
 
-alias cd=z # replace cd with zoxide
-alias cat=batcat # replace cat with bat
+alias cd='z' # replace cd with zoxide
+alias cat='batcat' # replace cat with bat
 
+alias f='vim $(fzf --preview="batcat --color=always {}")'
 
 
 
