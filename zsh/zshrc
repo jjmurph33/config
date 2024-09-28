@@ -81,3 +81,5 @@ alias f='vim $(fzf --preview="batcat --color=always {}")'
 
 
 
+
+. "$HOME/.cargo/env"
