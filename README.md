@@ -20,5 +20,5 @@ ln -s config/zsh/zshrc ~/.zshrc
 ln -s config/vim/vimrc ~/.vimrc
 ln -s config/git/gitconfig ~/.gitconfig
 ln -s config/tmux/tmux.conf ~/.tmux
-mkdir ~/.config/ohmyposh ; ln -s config/ohmyposh/zen.toml ~/.config/ohmyposh/
+ln -s config/starship/starship.toml ~/.config/starship/
 
