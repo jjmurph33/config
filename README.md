@@ -6,8 +6,8 @@ sudo apt update ; sudo apt upgrade
 #### Install all the things
 sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython zsh direnv fzf curl wget bat
 
-# oh-my-posh shell prompt
-curl -s https://ohmyposh.dev/install.sh | bash -s
+# starship shell prompt
+curl -sS https://starship.rs/install.sh | sh
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
