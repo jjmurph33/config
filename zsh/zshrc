@@ -56,4 +56,4 @@ alias c='batcat'
 alias f='vim $(fzf --preview="batcat --color=always {}")'
 alias t='tmux attach'
 
-
+export PATH=~/bin/:~/.local/bin/:$PATH

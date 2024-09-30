@@ -12,6 +12,9 @@ curl -sS https://starship.rs/install.sh | sh
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# yq tool
+wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O ~/.local/bin/yq && chmod +x ~/.local/bin/yq
+
 #### generate ssh keys (.ssh/id_dsa and .ssh/id_dsa.pub)
 ssh-keygen -t ed25519
 
@@ -19,6 +22,6 @@ ssh-keygen -t ed25519
 ln -s config/zsh/zshrc ~/.zshrc
 ln -s config/vim/vimrc ~/.vimrc
 ln -s config/git/gitconfig ~/.gitconfig
-ln -s config/tmux/tmux.conf ~/.tmux
+ln -s config/tmux/tmux.conf ~/.tmux.conf
 ln -s config/starship/starship.toml ~/.config/
 
