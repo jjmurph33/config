@@ -4,7 +4,7 @@
 sudo apt update ; sudo apt upgrade
 
 #### Install all the things
-sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython zsh direnv fzf curl wget bat
+sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython zsh direnv fzf curl wget bat xsel htop
 
 # starship shell prompt
 curl -sS https://starship.rs/install.sh | sh
