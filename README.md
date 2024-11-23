@@ -4,7 +4,7 @@
 sudo apt update ; sudo apt upgrade
 
 #### Install all the things
-sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0
+sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 ripgrep luarocks go
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -21,6 +21,7 @@ ln -s ~/config/git/gitconfig ~/.gitconfig
 ln -s ~/config/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/config/fish/config.fish ~/.config/fish/
 ln -s ~/config/fish/fish_variables ~/.config/fish/
-ln -s ~/config/fish/functions/fish_prompt.fish ~/.config/fish/functions/
+ln -s ~/config/fish/functions/ ~/.config/fish/
+ln -s ~/config/nvim ~/.config/
 
 
