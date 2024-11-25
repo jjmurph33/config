@@ -1,7 +1,13 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+<<<<<<< Updated upstream
 SETUVAR __fish_initialized:3400
+=======
+SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_f:fzf\x20\x2d\x2dpreview\x3d\x22batcat\x20\x2d\x2dcolor\x3dalways\x20\x7b\x7d\x22
+>>>>>>> Stashed changes
 SETUVAR _fish_abbr_gst:git\x20status
+SETUVAR _fish_abbr_t:tmux_attach
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:81a1c1
