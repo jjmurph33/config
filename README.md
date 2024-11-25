@@ -23,8 +23,6 @@ ln -s ~/config/vim/vimrc ~/.vimrc
 ln -s ~/config/git/gitconfig ~/.gitconfig
 ln -s ~/config/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/config/fish/config.fish ~/.config/fish/
-ln -s ~/config/fish/fish_variables ~/.config/fish/
 ln -s ~/config/fish/functions/ ~/.config/fish/
 ln -s ~/config/nvim ~/.config/
-
 
