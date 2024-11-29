@@ -990,3 +990,19 @@ require("lazy").setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Remap Home key to go to first non-whitespace character in normal mode
+-- and to beginning of line in insert mode
+vim.keymap.set("n", "<Home>", "^")
+vim.keymap.set("i", "<Home>", "<C-o>^")
+vim.keymap.set("v", "<Home>", "^")
+
+-- Also map <C-Home> to go to very beginning of line
+vim.keymap.set("n", "<C-Home>", "0")
+vim.keymap.set("i", "<C-Home>", "<C-o>0")
+vim.keymap.set("v", "<C-Home>", "0")
+
+-- Remap End key to go to end of line
+vim.keymap.set("n", "<End>", "$")
+vim.keymap.set("i", "<End>", "<C-o>$")
+vim.keymap.set("v", "<End>", "$")
