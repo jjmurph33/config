@@ -13,4 +13,10 @@ s - split
 z - zoom
 x - exit
 
+----------
+
+uv init --python 3.13 project-name
+uv add [dependency]
+uv sync
+
 
