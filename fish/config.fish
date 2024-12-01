@@ -5,6 +5,8 @@ if status is-interactive
     set -x PATH ~/.local/bin $PATH
     set -x PATH ~/opt/nvim/bin $PATH
 
+    set -x PAGER most # syntax highlighting
+
     abbr -a clip 'xclip -selection clipboard'
 
     abbr -a t tmux_attach
