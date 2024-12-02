@@ -1006,3 +1006,18 @@ require("lazy").setup({
 --vim.keymap.set("n", "<End>", "$")
 --vim.keymap.set("i", "<End>", "<C-o>$")
 --vim.keymap.set("v", "<End>", "$")
+--
+-- In init.lua
+local diagnostic_visible = true
+
+function ToggleDiagnostics()
+	diagnostic_visible = not diagnostic_visible
+	vim.diagnostic.config({
+		virtual_text = diagnostic_visible,
+		signs = diagnostic_visible,
+		underline = diagnostic_visible,
+	})
+end
+
+-- Add a keymapping to toggle
+vim.keymap.set("n", "<leader>dx", ToggleDiagnostics, { desc = "Toggle Diagnostics" })
