@@ -7,9 +7,7 @@ if status is-interactive
 
     set -x TERM tmux-256color
 
-    abbr -a clip 'xclip -selection clipboard'
+    abbr -a clip 'xclip -selection clipboard -rmlastnl'
 
-    abbr -a t tmux_attach
     abbr -a f 'fzf --preview="batcat --color=always {}"'
-    abbr -a so 'source .venv/bin/activate.fish'
 end

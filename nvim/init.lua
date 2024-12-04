@@ -1044,4 +1044,5 @@ function ToggleDiagnostics()
 		underline = diagnostic_visible,
 	})
 end
+
 vim.keymap.set("n", "<F10>", ToggleDiagnostics, { desc = "Toggle Diagnostics" })
