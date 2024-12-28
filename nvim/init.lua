@@ -7,6 +7,9 @@ vim.cmd.colorscheme("murphy")
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- don't leave only hidden buffers open
+vim.opt.hidden = false
+
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -736,7 +739,7 @@ require("lazy").setup({
 })
 
 -- C-s to save
-vim.keymap.set("i", "<C-s>", "<Cmd>w<CR><Esc>")
+vim.keymap.set({ "i", "n" }, "<C-s>", "<Cmd>w<CR><Esc>")
 
 -- F12 to run last command in last tmux pane
 vim.keymap.set("n", "<F12>", function()
@@ -763,8 +766,8 @@ vim.keymap.set("n", "<F10>", ToggleDiagnostics, { desc = "Toggle Diagnostics" })
 --	end,
 --})
 
-vim.keymap.set("n", "<space>x", ":.lua<CR>")
-vim.keymap.set("v", "<space>x", ":lua<CR>")
+vim.keymap.set("n", "<leader>x", ":.lua<CR>")
+vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
@@ -777,25 +780,29 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
-local job_id = 0
-vim.keymap.set("n", "<space>to", function()
+local term_job_id = -1
+local term_window = -1
+local term_command = ""
+vim.keymap.set("n", "<leader>to", function()
 	vim.cmd.vnew()
 	vim.cmd.term()
 	vim.api.nvim_win_set_width(0, 50)
-	job_id = vim.bo.channel
+	term_window = vim.api.nvim_get_current_win()
+	term_job_id = vim.bo.channel
+	vim.cmd("normal A")
 end, { desc = "terminal [o]pen" })
 
-local current_command = ""
-vim.keymap.set("n", "<space>te", function()
-	current_command = vim.fn.input("Command: ")
-end)
-
-vim.keymap.set("n", "<space>tr", function()
-	if current_command == "" then
-		current_command = vim.fn.input("Command: ")
+vim.keymap.set("n", "<leader>tc", function()
+	if vim.api.nvim_win_is_valid(term_window) then
+		vim.api.nvim_win_close(term_window, false)
 	end
+end, { desc = "terminal [c]lose" })
 
-	vim.fn.chansend(job_id, { current_command .. "\r\n" })
-end)
+vim.keymap.set("n", "<leader>tr", function()
+	term_command = vim.fn.input("Command: ", term_command)
+	vim.fn.chansend(term_job_id, { term_command, "" })
+	local buf = vim.api.nvim_win_get_buf(term_window)
+	vim.api.nvim_win_set_cursor(term_window, { vim.api.nvim_buf_line_count(buf), 0 })
+end, { desc = "terminal [r]un" })
 
-vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+vim.opt.autochdir = true
