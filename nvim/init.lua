@@ -781,8 +781,7 @@ local job_id = 0
 vim.keymap.set("n", "<space>to", function()
 	vim.cmd.vnew()
 	vim.cmd.term()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 5)
+	vim.api.nvim_win_set_width(0, 50)
 	job_id = vim.bo.channel
 end, { desc = "terminal [o]pen" })
 
