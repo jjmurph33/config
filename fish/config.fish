@@ -3,7 +3,6 @@ if status is-interactive
     set fish_greeting ''
 
     set -x PATH ~/.local/bin $PATH
-    set -x PATH ~/opt/nvim/bin $PATH
 
     set -x TERM tmux-256color
 
