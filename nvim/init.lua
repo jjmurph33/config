@@ -739,13 +739,8 @@ require("lazy").setup({
 -- C-s to save
 vim.keymap.set({ "i", "n" }, "<C-s>", "<Cmd>w<CR><Esc>")
 
--- F12 to run last command in last tmux pane
-vim.keymap.set("n", "<F12>", function()
-	vim.fn.system("tmux send-keys -t ! Up C-m")
-end)
-
 -- F10 to toggle diagnostic messages from LSP
-local diagnostic_visible = true
+local diagnostic_visible = false
 function ToggleDiagnostics()
 	diagnostic_visible = not diagnostic_visible
 	vim.diagnostic.config({
@@ -754,15 +749,12 @@ function ToggleDiagnostics()
 		underline = diagnostic_visible,
 	})
 end
+vim.diagnostic.config({
+	virtual_text = diagnostic_visible,
+	signs = diagnostic_visible,
+	underline = diagnostic_visible,
+})
 vim.keymap.set("n", "<F10>", ToggleDiagnostics, { desc = "Toggle Diagnostics" })
-
--- set CWD to match current buffer
---vim.api.nvim_create_autocmd("BufEnter", {
---	pattern = "*",
---	callback = function()
---		vim.cmd("lcd %:p:h")
---	end,
---})
 
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
