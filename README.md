@@ -6,14 +6,16 @@ sudo apt update ; sudo apt upgrade
 #### Install all the things
 sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake
 
-# tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 # yq tool
 wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O ~/.local/bin/yq && chmod +x ~/.local/bin/yq
 
+# uv for python
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # neovim
-https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-source
+git clone https://github.com/neovim/neovim
+cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
 
 #### generate ssh keys (.ssh/id_dsa and .ssh/id_dsa.pub)
 ssh-keygen -t ed25519
@@ -21,7 +23,6 @@ ssh-keygen -t ed25519
 #### create symlinks to the config files in this repo
 ln -s ~/config/vim/vimrc ~/.vimrc
 ln -s ~/config/git/gitconfig ~/.gitconfig
-ln -s ~/config/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/config/fish/config.fish ~/.config/fish/
 ln -s ~/config/fish/functions/ ~/.config/fish/
 ln -s ~/config/nvim ~/.config/
