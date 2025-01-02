@@ -2,7 +2,14 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- colors
 vim.cmd.colorscheme("murphy")
+
+-- tabs are 4 spaces
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
@@ -58,7 +65,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+--vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -68,9 +75,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
--- Exit terminal
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 --  Use CTRL+<hjkl> to switch between windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -102,20 +106,6 @@ vim.opt.rtp:prepend(lazypath)
 --  To check the current status of your plugins, run
 --    :Lazy
 require("lazy").setup({
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-
-	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		},
-	},
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -123,38 +113,6 @@ require("lazy").setup({
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
 				mappings = vim.g.have_nerd_font,
-				-- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-				-- default which-key.nvim defined Nerd Font icons, otherwise define a string table
-				keys = vim.g.have_nerd_font and {} or {
-					Up = "<Up> ",
-					Down = "<Down> ",
-					Left = "<Left> ",
-					Right = "<Right> ",
-					C = "<C-…> ",
-					M = "<M-…> ",
-					D = "<D-…> ",
-					S = "<S-…> ",
-					CR = "<CR> ",
-					Esc = "<Esc> ",
-					ScrollWheelDown = "<ScrollWheelDown> ",
-					ScrollWheelUp = "<ScrollWheelUp> ",
-					NL = "<NL> ",
-					BS = "<BS> ",
-					Space = "<Space> ",
-					Tab = "<Tab> ",
-					F1 = "<F1>",
-					F2 = "<F2>",
-					F3 = "<F3>",
-					F4 = "<F4>",
-					F5 = "<F5>",
-					F6 = "<F6>",
-					F7 = "<F7>",
-					F8 = "<F8>",
-					F9 = "<F9>",
-					F10 = "<F10>",
-					F11 = "<F11>",
-					F12 = "<F12>",
-				},
 			},
 
 			-- Document existing key chains
@@ -206,7 +164,7 @@ require("lazy").setup({
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[s]earch [h]elp" })
-			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[s]earch [k]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
@@ -250,7 +208,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "Bilal2453/luvit-meta", lazy = true },
+	-- { "Bilal2453/luvit-meta", lazy = true },
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
@@ -604,17 +562,17 @@ require("lazy").setup({
 
 	--{ -- colorscheme.
 	-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-	--	"folke/tokyonight.nvim",
-	--	priority = 1000, -- Make sure to load this before all the other start plugins.
-	--	init = function()
+	--  "folke/tokyonight.nvim",
+	--  priority = 1000, -- Make sure to load this before all the other start plugins.
+	--  init = function()
 	-- Load the colorscheme here.
 	-- Like many other themes, this one has different styles, and you could load
 	-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-	--		vim.cmd.colorscheme("tokyonight-night")
+	--      vim.cmd.colorscheme("tokyonight-night")
 
 	-- You can configure highlights by doing something like:
-	--		vim.cmd.hi("Comment gui=none")
-	--	end,
+	--      vim.cmd.hi("Comment gui=none")
+	--  end,
 	--},
 
 	-- Highlight todo, notes, etc in comments
@@ -645,26 +603,18 @@ require("lazy").setup({
 
 			-- Simple and easy statusline.
 			local statusline = require("mini.statusline")
-			-- set use_icons to true if you have a Nerd Font
 			statusline.setup({ use_icons = vim.g.have_nerd_font })
-
-			-- You can configure sections in the statusline by overriding their
-			-- default behavior. For example, here we set the section for
-			-- cursor location to LINE:COLUMN
+			-- cursor location LINE:COLUMN
 			---@diagnostic disable-next-line: duplicate-set-field
 			statusline.section_location = function()
 				return "%2l:%-2v"
 			end
-
-			-- ... and there is more!
-			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -679,61 +629,23 @@ require("lazy").setup({
 				"vim",
 				"vimdoc",
 			},
-			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
 				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
 	-- require("kickstart.plugins.debug"),
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
 	-- require 'kickstart.plugins.autopairs',
 	-- require("kickstart.plugins.neo-tree"),
-	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+	require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
 
-	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-	--    This is the easiest way to modularize your config.
-	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	{ import = "custom.plugins" },
-	--
-	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
-	-- Or use telescope!
-	-- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
-	-- you can continue same window with `<space>sr` which resumes last telescope search
-}, {
-	ui = {
-		-- If you are using a Nerd Font: set icons to an empty table which will use the
-		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-		icons = vim.g.have_nerd_font and {} or {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
-	},
 })
 
 -- C-s to save
@@ -762,37 +674,8 @@ vim.keymap.set("v", "<leader>x", ":lua<CR>")
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
-vim.api.nvim_create_autocmd("TermOpen", {
-	group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
-	callback = function()
-		vim.opt.number = false
-		vim.opt.relativenumber = false
-	end,
-})
-
-local term_job_id = -1
-local term_window = -1
-local term_command = ""
-vim.keymap.set("n", "<leader>to", function()
-	vim.cmd.vnew()
-	vim.cmd.term()
-	vim.api.nvim_win_set_width(0, 50)
-	term_window = vim.api.nvim_get_current_win()
-	term_job_id = vim.bo.channel
-	vim.cmd("normal A")
-end, { desc = "terminal [o]pen" })
-
-vim.keymap.set("n", "<leader>tc", function()
-	if vim.api.nvim_win_is_valid(term_window) then
-		vim.api.nvim_win_close(term_window, false)
-	end
-end, { desc = "terminal [c]lose" })
-
-vim.keymap.set("n", "<leader>tr", function()
-	term_command = vim.fn.input("Command: ", term_command)
-	vim.fn.chansend(term_job_id, { term_command, "" })
-	local buf = vim.api.nvim_win_get_buf(term_window)
-	vim.api.nvim_win_set_cursor(term_window, { vim.api.nvim_buf_line_count(buf), 0 })
-end, { desc = "terminal [r]un" })
-
+-- auto change directory to current buffer
 vim.opt.autochdir = true
+
+-- can change buffers without saving
+vim.opt.hidden = true
