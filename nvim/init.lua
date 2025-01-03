@@ -628,6 +628,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"sql",
 			},
 			auto_install = true,
 			highlight = {
@@ -643,7 +644,15 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.autopairs',
 	-- require("kickstart.plugins.neo-tree"),
 	require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
-
+	-- Markdown
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		main = "render-markdown",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you use the mini.nvim suite
+	},
+	-- SQL queries ":DB"
+	"tpope/vim-dadbod",
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	{ import = "custom.plugins" },
 })
