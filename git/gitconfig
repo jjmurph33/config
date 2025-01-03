@@ -6,3 +6,5 @@
 	pager = less -FRX
 [init]
 	defaultBranch = master
+[pull]
+	rebase = false
