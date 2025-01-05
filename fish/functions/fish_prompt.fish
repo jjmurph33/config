@@ -12,7 +12,6 @@ function fish_prompt --description 'Write out the prompt'
     set_color normal
 
     __terlar_git_prompt
-    fish_hg_prompt
     echo
 
     if not test $last_status -eq 0
