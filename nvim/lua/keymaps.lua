@@ -1,8 +1,13 @@
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic keymaps
+-- easily exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- quickfix list
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
 --  Use CTRL+<hjkl> to switch between windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -12,12 +17,6 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 -- C-s to save
 vim.keymap.set({ "i", "n" }, "<C-s>", "<Cmd>w<CR><Esc>")
-
-vim.keymap.set("n", "<leader>x", ":.lua<CR>")
-vim.keymap.set("v", "<leader>x", ":lua<CR>")
-
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
 -- F10 to toggle diagnostic messages from LSP
 local diagnostic_visible = false
@@ -35,3 +34,10 @@ vim.diagnostic.config({
 	underline = diagnostic_visible,
 })
 vim.keymap.set("n", "<F10>", ToggleDiagnostics, { desc = "Toggle Diagnostics" })
+
+-- run lua code
+vim.keymap.set("n", "<leader>x", ":.lua<CR>")
+vim.keymap.set("v", "<leader>x", ":lua<CR>")
+
+-- Shift-Tab to switch to last buffer
+vim.keymap.set("n", "<S-Tab>", ":b#<CR>", { noremap = true, silent = true })

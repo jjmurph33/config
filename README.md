@@ -24,3 +24,6 @@ ssh-keygen -t ed25519
  ln -s ~/config/fish/functions/ ~/.config/fish/
  ln -s ~/config/nvim/ ~/.config
 
+# fish shell
+fish_update_completions
+
