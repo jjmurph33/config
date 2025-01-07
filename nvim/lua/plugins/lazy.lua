@@ -13,6 +13,16 @@ vim.opt.rtp:prepend(lazypath)
 --  To check the current status of your plugins, run
 --    :Lazy
 require("lazy").setup({
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup()
+            vim.cmd.colorscheme "catppuccin-mocha"
+        end,
+    },
+
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -554,6 +564,18 @@ require("lazy").setup({
 	},
 	-- SQL queries ":DB"
 	"tpope/vim-dadbod",
+    -- ai completion
+    {
+        "supermaven-inc/supermaven-nvim",
+        config = function()
+            require("supermaven-nvim").setup({
+                color = {
+                    suggestion_color = "#ffffff",
+                    cterm = 244,
+                },
+            })
+        end,
+    },
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--{ import = "custom.plugins" },
 	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
