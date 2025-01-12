@@ -565,17 +565,17 @@ require("lazy").setup({
 	-- SQL queries ":DB"
 	"tpope/vim-dadbod",
     -- ai completion
-    {
-        "supermaven-inc/supermaven-nvim",
-        config = function()
-            require("supermaven-nvim").setup({
-                color = {
-                    suggestion_color = "#ffffff",
-                    cterm = 244,
-                },
-            })
-        end,
-    },
+    -- {
+    --     "supermaven-inc/supermaven-nvim",
+    --     config = function()
+    --         require("supermaven-nvim").setup({
+    --             color = {
+    --                 suggestion_color = "#ffffff",
+    --                 cterm = 244,
+    --             },
+    --         })
+    --     end,
+    -- },
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--{ import = "custom.plugins" },
 	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
