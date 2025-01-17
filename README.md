@@ -7,9 +7,9 @@ sudo apt update ; sudo apt upgrade
 sudo apt install git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake sqlite3 fish
 
 #### neovim - build from source
-git clone https://github.com/neovim/neovim.git
-cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+git clone https://github.com/neovim/neovim.git  
+cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo  
+sudo make install  
 
 #### uv for python
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -18,12 +18,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ssh-keygen -t ed25519
 
 #### create symlinks to the config files in this repo
-`ln -s ~/config/vim/vimrc ~/.vimrc`
-`ln -s ~/config/git/gitconfig ~/.gitconfig`
-`ln -s ~/config/fish/config.fish ~/.config/fish/`
-`ln -s ~/config/fish/functions/ ~/.config/fish/`
-`ln -s ~/config/nvim/ ~/.config`
-`ln -s ~/config/fish/conf.d/autovenv.fish ~/.config/fish/conf.d/`
+`ln -s ~/config/vim/vimrc ~/.vimrc`  
+`ln -s ~/config/git/gitconfig ~/.gitconfig`  
+`ln -s ~/config/fish/config.fish ~/.config/fish/`  
+`ln -s ~/config/fish/functions/ ~/.config/fish/`  
+`ln -s ~/config/nvim/ ~/.config`  
+`ln -s ~/config/fish/conf.d/autovenv.fish ~/.config/fish/conf.d/`  
 
 #### fish shell
 fish_update_completions
