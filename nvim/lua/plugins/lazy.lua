@@ -513,9 +513,7 @@ require("lazy").setup({
             statusline.section_location = function()
                 return "%2l:%-2v"
             end
-            --require("mini.notify").setup()
             require("mini.move").setup()
-            require("mini.animate").setup()
         end,
     },
 	{ -- Highlight, edit, and navigate code

@@ -18,6 +18,12 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- C-s to save
 vim.keymap.set({ "i", "n" }, "<C-s>", "<Cmd>w<CR><Esc>")
 
+-- Send all delete operations to the "black hole register"
+vim.keymap.set({'n', 'v'}, 'd', '"_d')
+vim.keymap.set({'n', 'v'}, 'D', '"_D')
+vim.keymap.set({'n', 'v'}, 'c', '"_c')
+vim.keymap.set({'n', 'v'}, 'C', '"_C')
+
 -- F10 to toggle diagnostic messages from LSP
 local diagnostic_visible = false
 function ToggleDiagnostics()
