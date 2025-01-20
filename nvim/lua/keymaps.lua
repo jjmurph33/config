@@ -20,7 +20,7 @@ vim.keymap.set({ "i", "n" }, "<C-s>", "<Cmd>w<CR><Esc>")
 
 -- Send all delete operations to the "black hole register"
 vim.keymap.set({'n', 'v'}, 'd', '"_d')
-vim.keymap.set({'n', 'v'}, 'D', '"_D')
+vim.keymap.set({'n', 'v'}, 'x', '"_x')
 vim.keymap.set({'n', 'v'}, 'c', '"_c')
 vim.keymap.set({'n', 'v'}, 'C', '"_C')
 
