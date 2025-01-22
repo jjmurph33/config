@@ -18,6 +18,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ssh-keygen -t ed25519
 
 #### create symlinks to the config files in this repo
+`ln -s ~/config/fonts ~/.fonts  
 `ln -s ~/config/vim/vimrc ~/.vimrc`  
 `ln -s ~/config/git/gitconfig ~/.gitconfig`  
 `ln -s ~/config/fish/config.fish ~/.config/fish/`  
