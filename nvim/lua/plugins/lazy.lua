@@ -13,17 +13,17 @@ vim.opt.rtp:prepend(lazypath)
 --  To check the current status of your plugins, run
 --    :Lazy
 require("lazy").setup({
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            require("catppuccin").setup()
-            vim.cmd.colorscheme "catppuccin-mocha"
-        end,
-    },
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup()
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
+	},
 
-    { -- Useful plugin to show you pending keybinds.
+	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
@@ -137,7 +137,16 @@ require("lazy").setup({
 
 			-- Useful status updates for LSP.
 			-- `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ "j-hui/fidget.nvim", opts = {} },
+			{
+				"j-hui/fidget.nvim",
+				opts = {
+					progress = {
+						suppress_on_insert = true,
+						ignore_done_already = true,
+						ignore_empty_message = true,
+					},
+				},
+			},
 
 			-- Allows extra capabilities provided by nvim-cmp
 			"hrsh7th/cmp-nvim-lsp",
@@ -275,6 +284,9 @@ require("lazy").setup({
 						jedi_completion = { fuzzy = true },
 						-- import sorting
 						pyls_isort = { enabled = false },
+						mccabe = { enabled = false },
+						preload = { enabled = false },
+						pycodestyle = { enabled = false },
 					},
 				},
 
@@ -341,29 +353,10 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
-			format_on_save = function(bufnr)
-				-- Disable "format_on_save lsp_fallback" for languages that don't
-				-- have a well standardized coding style. You can add additional
-				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
-				local lsp_format_opt
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					lsp_format_opt = "never"
-				else
-					lsp_format_opt = "fallback"
-				end
-				return {
-					timeout_ms = 500,
-					lsp_format = lsp_format_opt,
-				}
-			end,
+			format_on_save = false,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				python = { "isort", "black" },
 			},
 		},
 	},
@@ -500,22 +493,22 @@ require("lazy").setup({
 		opts = { signs = false },
 	},
 
-    { -- Collection of various small independent plugins/modules
-        "echasnovski/mini.nvim",
-        config = function()
-            require("mini.ai").setup({ n_lines = 500 })
-            require("mini.surround").setup()
-            -- Simple and easy statusline.
-            local statusline = require("mini.statusline")
-            statusline.setup({ use_icons = vim.g.have_nerd_font })
-            -- cursor location LINE:COLUMN
-            ---@diagnostic disable-next-line: duplicate-set-field
-            statusline.section_location = function()
-                return "%2l:%-2v"
-            end
-            require("mini.move").setup()
-        end,
-    },
+	{ -- Collection of various small independent plugins/modules
+		"echasnovski/mini.nvim",
+		config = function()
+			require("mini.ai").setup({ n_lines = 500 })
+			require("mini.surround").setup()
+			-- Simple and easy statusline.
+			local statusline = require("mini.statusline")
+			statusline.setup({ use_icons = vim.g.have_nerd_font })
+			-- cursor location LINE:COLUMN
+			---@diagnostic disable-next-line: duplicate-set-field
+			statusline.section_location = function()
+				return "%2l:%-2v"
+			end
+			require("mini.move").setup()
+		end,
+	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -552,18 +545,18 @@ require("lazy").setup({
 	},
 	-- SQL queries ":DB"
 	"tpope/vim-dadbod",
-    -- ai completion
-    -- {
-    --     "supermaven-inc/supermaven-nvim",
-    --     config = function()
-    --         require("supermaven-nvim").setup({
-    --             color = {
-    --                 suggestion_color = "#ffffff",
-    --                 cterm = 244,
-    --             },
-    --         })
-    --     end,
-    -- },
+	-- ai completion
+	-- {
+	--     "supermaven-inc/supermaven-nvim",
+	--     config = function()
+	--         require("supermaven-nvim").setup({
+	--             color = {
+	--                 suggestion_color = "#ffffff",
+	--                 cterm = 244,
+	--             },
+	--         })
+	--     end,
+	-- },
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--{ import = "custom.plugins" },
 	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
