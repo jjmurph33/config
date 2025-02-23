@@ -2,9 +2,10 @@ if status is-interactive
     fish_default_key_bindings
     set fish_greeting ''
 
-    set -x PATH ~/.local/bin $PATH
+    set -x FLYCTL_INSTALL /home/john/.fly
 
-    set -x TERM tmux-256color
+    set -x PATH ~/.local/bin $PATH
+    set -x PATH $FLYCTL_INSTALL/bin $PATH
 
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
 
