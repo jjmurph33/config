@@ -557,8 +557,7 @@ require("lazy").setup({
 	--         })
 	--     end,
 	-- },
-	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-	--{ import = "custom.plugins" },
 	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
 	require("plugins.oil"), -- adds gitsigns recommend keymaps
+	require("plugins.copilot"),
 })

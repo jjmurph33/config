@@ -8,3 +8,6 @@ require("terminal")
 require("floatterminal")
 require("menu")
 require("plugins.lazy")
+
+vim.cmd("Copilot disable") --disabled by default, Alt-\ to override
+
