@@ -5,6 +5,8 @@ if status is-interactive
     set -x FLYCTL_INSTALL /home/john/.fly
 
     set -x PATH ~/.local/bin $PATH
+    set -x PATH ~/nvim/bin $PATH
+    set -x PATH ~/node/bin $PATH
     set -x PATH $FLYCTL_INSTALL/bin $PATH
 
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
