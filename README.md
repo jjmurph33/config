@@ -6,13 +6,11 @@ sudo apt update ; sudo apt upgrade
 #### Install all the things
 sudo apt install ssh git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake sqlite3 fish libjpeg-dev
 
-#### neovim - build from source
-git clone https://github.com/neovim/neovim.git  
-cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo  
-sudo make install  
+#### non apt programs
+extract and move from ~/config/programs
 
 #### uv for python
-curl -LsSf https://astral.sh/uv/install.sh | sh
+pip install uv --break-system-packages
 
 #### generate ssh keys (.ssh/id_dsa and .ssh/id_dsa.pub)
 ssh-keygen -t ed25519
