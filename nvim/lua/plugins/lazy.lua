@@ -1,4 +1,3 @@
--- lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -6,11 +5,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		error("Error cloning lazy.nvim:\n" .. out)
 	end
-end ---@diagnostic disable-next-line: undefined-field
+end
 vim.opt.rtp:prepend(lazypath)
 
--- Configure and install plugins
---  To check the current status of your plugins, run
 --    :Lazy
 require("lazy").setup({
 	{
@@ -23,7 +20,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{ -- Useful plugin to show you pending keybinds.
+	{ -- show pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
@@ -31,7 +28,6 @@ require("lazy").setup({
 				-- set icon mappings to true if you have a Nerd Font
 				mappings = vim.g.have_nerd_font,
 			},
-
 			-- Document existing key chains
 			spec = {
 				{ "<leader>c", group = "[c]ode", mode = { "n", "x" } },
@@ -558,6 +554,6 @@ require("lazy").setup({
 	--     end,
 	-- },
 	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
-	require("plugins.oil"), -- adds gitsigns recommend keymaps
+	require("plugins.oil"),
 	require("plugins.copilot"),
 })
