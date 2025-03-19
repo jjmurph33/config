@@ -15,7 +15,12 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup()
+			require("catppuccin").setup({
+                dim_inactive = {
+                    enabled = true,
+                    shade = "dark",
+                    percentage = 0.15,
+            }})
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
