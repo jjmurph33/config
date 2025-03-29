@@ -4,10 +4,11 @@
 sudo apt update ; sudo apt upgrade
 
 #### Install all the things
-sudo apt install ssh git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake sqlite3 fish libjpeg-dev
+sudo apt install ssh git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-
+dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake sqlite3 fish libjpeg-dev
 
-#### non apt programs
-extract and move from ~/config/programs
+#### generate ssh keys
+ssh-keygen -t ed25519
 
 #### rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -15,8 +16,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #### uv for python
 pip install uv --break-system-packages
 
-#### generate ssh keys (.ssh/id_dsa and .ssh/id_dsa.pub)
-ssh-keygen -t ed25519
+#### other programs
+extract and move from ~/config/programs to home
 
 #### create symlinks to the config files in this repo
 `ln -s ~/config/fonts ~/.fonts`  
