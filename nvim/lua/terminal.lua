@@ -15,9 +15,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- default to insert mode when switching to a terminal
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
-        vim.cmd("startinsert")
+		vim.cmd("startinsert")
 	end,
-    pattern = { "term://*" },
+	pattern = { "term://*" },
 })
 
 -- open a terminal at the bottom of the screen
@@ -62,9 +62,5 @@ vim.keymap.set("n", "<leader>tr", function()
 	end)
 	vim.fn.chansend(run_term_job_id, { run_term_command, "" })
 end, { desc = "terminal [r]un (F12 to rerun)" })
-
-vim.keymap.set("n", "<F2>", function()
-	print("hi")
-end, { desc = "" })
 
 return {}

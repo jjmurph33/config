@@ -51,3 +51,8 @@ vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
 -- Shift-Tab to switch to last buffer
 vim.keymap.set("n", "<S-Tab>", ":b#<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<F2>", function()
+	print("hi")
+end, { desc = "" })
+
