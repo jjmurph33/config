@@ -12,6 +12,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
+-- default to insert mode when switching to a terminal
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+        vim.cmd("startinsert")
+	end,
+    pattern = { "term://*" },
+})
+
 -- open a terminal at the bottom of the screen
 vim.keymap.set("n", "<leader>to", function()
 	vim.cmd.new()
