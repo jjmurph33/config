@@ -15,6 +15,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #### uv for python
 pip install uv --break-system-packages
 
+#### zed
+curl -f https://zed.dev/install.sh | sh
+
 #### other programs
 extract and move from ~/config/programs to home
 
