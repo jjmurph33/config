@@ -2,12 +2,12 @@ if status is-interactive
     fish_default_key_bindings
     set fish_greeting ''
 
-    set -x FLYCTL_INSTALL /home/john/.fly
+    #set -x FLYCTL_INSTALL /home/john/.fly
 
     set -x PATH ~/.local/bin $PATH
-    set -x PATH ~/nvim/bin $PATH
-    set -x PATH ~/node/bin $PATH
-    set -x PATH $FLYCTL_INSTALL/bin $PATH
+    set -x PATH /opt/nvim/bin $PATH
+    #set -x PATH ~/node/bin $PATH
+    #set -x PATH $FLYCTL_INSTALL/bin $PATH
 
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
 
