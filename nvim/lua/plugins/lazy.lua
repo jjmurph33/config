@@ -16,11 +16,12 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-                dim_inactive = {
-                    enabled = true,
-                    shade = "dark",
-                    percentage = 0.15,
-            }})
+				dim_inactive = {
+					enabled = true,
+					shade = "dark",
+					percentage = 0.15,
+				},
+			})
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
@@ -306,7 +307,21 @@ require("lazy").setup({
 					},
 				},
 
-                rust_analyzer = {},
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							diagnostics = {
+								enable = true,
+							},
+							cargo = {
+								targetDir = true,
+							},
+							--checkOnSave = {
+							--	command = "clippy",
+							--},
+						},
+					},
+				},
 			}
 
 			-- Ensure the servers and tools above are installed
