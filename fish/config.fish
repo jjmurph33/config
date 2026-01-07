@@ -12,4 +12,8 @@ if status is-interactive
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
 
     abbr -a f 'fzf --preview="batcat --color=always {}"'
+
+    # opencode
+    fish_add_path /home/john/.opencode/bin
 end
+
