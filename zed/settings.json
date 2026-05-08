@@ -7,13 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "restore_on_startup": "launchpad",
   "disable_ai": false,
   "icon_theme": "Catppuccin Mocha",
   "agent": {
+    "dock": "right",
     "default_model": {
-      "provider": "ollama",
-      "model": "llama3.2:1b",
+      "effort": "high",
+      "enable_thinking": false,
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini",
     },
     "enable_feedback": false,
     "model_parameters": [],
