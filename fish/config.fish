@@ -2,8 +2,6 @@ if status is-interactive
     fish_default_key_bindings
     set fish_greeting ''
 
-    #set -x FLYCTL_INSTALL /home/john/.fly
-
     set -x PATH ~/.local/bin $PATH
     set -x PATH /opt/nvim/bin $PATH
     #set -x PATH ~/node/bin $PATH
@@ -14,6 +12,6 @@ if status is-interactive
     abbr -a f 'fzf --preview="batcat --color=always {}"'
 
     # opencode
-    fish_add_path /home/john/.opencode/bin
+    fish_add_path ~/.opencode/bin
 end
 
