@@ -7,17 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+  },
+  "languages": {
+    "Rust": {
+      "show_edit_predictions": false,
+    },
+  },
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "restore_on_startup": "launchpad",
   "disable_ai": false,
@@ -104,5 +115,5 @@
   "vim_mode": false,
   "ui_font_size": 16,
   "buffer_font_size": 15,
-  "theme": "Catppuccin Mocha",
+  "theme": "BlackFox",
 }
