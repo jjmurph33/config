@@ -26,11 +26,11 @@ extract and move from ~/config/programs to /opt/
 `ln -s ~/config/vim/vimrc ~/.vimrc`  
 `ln -s ~/config/git/gitconfig ~/.gitconfig`  
 `ln -s ~/config/nvim ~/.config/`  
-`ln -s ~/config/zed/settings.json ~/.config/zed/settings.json`
+`ln -s ~/config/zed/settings.json ~/.config/zed/settings.json`  
 `rm -r ~/.config/fish ; ln -s ~/config/fish ~/.config/`  
 
 #### fish shell
-fish_update_completions
+fish_update_completions  
 chsh -s /usr/bin/fish  
 
 
