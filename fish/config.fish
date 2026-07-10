@@ -6,12 +6,15 @@ if status is-interactive
     set -x PATH /opt/nvim/bin $PATH
     #set -x PATH ~/node/bin $PATH
     #set -x PATH $FLYCTL_INSTALL/bin $PATH
+    set -x PATH ~/.cargo/bin $PATH
+    set -x PATH ~/.usagi/bin $PATH
+    set -x PATH ~/.config/nvm $PATH
 
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
 
     abbr -a f 'fzf --preview="batcat --color=always {}"'
 
     # opencode
-    fish_add_path ~/.opencode/bin
+    #fish_add_path ~/.opencode/bin
 end
 
