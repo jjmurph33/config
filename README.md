@@ -4,7 +4,7 @@
 sudo apt update ; sudo apt upgrade
 
 #### Install all the things
-sudo apt install ssh git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake sqlite3 fish libjpeg-dev xclip ghostwriter libclang-dev ruby
+sudo apt install ssh git vim build-essential man python3 python-is-python3 python3-pip python3-venv python3-ipython direnv fzf curl wget bat xsel htop zip libsdl2-2.0-0 libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev pkg-config libusb-1.0-0-dev libftdi1-dev libudev-dev ripgrep luarocks golang ninja-build gettext cmake sqlite3 fish libjpeg-dev xclip ghostwriter libclang-dev ruby python3-neovim
 
 #### generate ssh keys
 ssh-keygen -t ed25519
@@ -19,7 +19,9 @@ pip install uv --break-system-packages
 curl -f https://zed.dev/install.sh | sh
 
 #### neovim
-extract and move from ~/config/programs to /opt/nvim
+wget https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.tar.gz
+tar xf nvim-linux-x86_64.tar.gz
+sudo mv nvim-linux-x86_64 /opt/nvim
 
 #### treesitter
 cargo install tree-sitter-cli
