@@ -15,6 +15,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #### uv for python
 pip install uv --break-system-packages
 
+#### fnm for node and npm
+curl -o- https://fnm.vercel.app/install | bash
+fnm install 24
+
 #### zed
 curl -f https://zed.dev/install.sh | sh
 
