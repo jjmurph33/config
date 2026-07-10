@@ -2,19 +2,15 @@ if status is-interactive
     fish_default_key_bindings
     set fish_greeting ''
 
-    set -x PATH ~/.local/bin $PATH
-    set -x PATH /opt/nvim/bin $PATH
-    #set -x PATH ~/node/bin $PATH
-    #set -x PATH $FLYCTL_INSTALL/bin $PATH
-    set -x PATH ~/.cargo/bin $PATH
-    set -x PATH ~/.usagi/bin $PATH
-    set -x PATH ~/.config/nvm $PATH
-
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
-
     abbr -a f 'fzf --preview="batcat --color=always {}"'
 
-    # opencode
-    #fish_add_path ~/.opencode/bin
+    fish_add_path ~/.local/bin
+    fish_add_path ~/.cargo/bin
+    fish_add_path ~/.config/nvm
+
+    fish_add_path /opt/nvim/bin
+    fish_add_path /opt/usagi/
+    fish_add_path /opt/butler/
 end
 
