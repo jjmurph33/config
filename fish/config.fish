@@ -8,6 +8,7 @@ if status is-interactive
     fish_add_path ~/.local/bin
     fish_add_path ~/.cargo/bin
     fish_add_path ~/.config/nvm
+    fish_add_path ~/.usagi/bin/
 
     fish_add_path /opt/nvim/bin
     fish_add_path /opt/usagi/

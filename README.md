@@ -22,6 +22,9 @@ fnm install 24
 #### zed
 curl -f https://zed.dev/install.sh | sh
 
+#### usagi
+curl -fsSL https://usagiengine.com/install.sh | sh
+
 #### neovim
 wget https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.tar.gz
 tar xf nvim-linux-x86_64.tar.gz

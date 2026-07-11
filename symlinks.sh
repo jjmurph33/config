@@ -1,6 +1,6 @@
-ln -s ./fonts ~/.fonts
-ln -s ./vim/vimrc ~/.vimrc
-ln -s ./git/gitconfig ~/.gitconfig
-ln -s ./nvim ~/.config/
-ln -s ./zed/settings.json ~/.config/zed/settings.json
-rm -r ~/.config/fish ; ln -s ./fish ~/.config/
+ln -sr fonts ~/.fonts
+ln -sr vim/vimrc ~/.vimrc
+ln -sr git/gitconfig ~/.gitconfig
+ln -sr nvim ~/.config/
+ln -sr zed/settings.json ~/.config/zed/settings.json
+rm -r ~/.config/fish ; ln -sr fish ~/.config/
