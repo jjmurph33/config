@@ -5,6 +5,8 @@ if status is-interactive
     abbr -a clip 'xclip -selection clipboard -rmlastnl'
     abbr -a f 'fzf --preview="batcat --color=always {}"'
 
+    set -x COLORTERM truecolor
+
     fish_add_path ~/.local/bin
     fish_add_path ~/.cargo/bin
     fish_add_path ~/.config/nvm
