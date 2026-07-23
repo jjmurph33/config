@@ -531,34 +531,24 @@ require("lazy").setup({
 	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-        branch="master",
+		branch = "main",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"query",
-				"rust",
-				"sql",
-				"toml",
-				"vim",
-				"vimdoc",
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = { "ruby" },
-			},
-			indent = { enable = true, disable = { "ruby" } },
-		},
+		config = function()
+			require("nvim-treesitter").setup({})
+			local parsers = {
+				"bash", "c", "diff", "html", "lua", "luadoc",
+				"markdown", "markdown_inline", "python", "query",
+				"rust", "sql", "toml", "vim", "vimdoc",
+			}
+			vim.api.nvim_create_autocmd("VimEnter", {
+				callback = function()
+					local ts = require("nvim-treesitter")
+					if ts.install then
+						ts.install(parsers)
+					end
+				end,
+			})
+		end,
 	},
 	-- Markdown
 	{
