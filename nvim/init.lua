@@ -1,7 +1,5 @@
 vim.cmd.colorscheme("catppuccin")
 
-vim.g.mapleader = " "
-
 vim.o.number = true
 vim.o.relativenumber = false
 vim.o.tabstop = 4
@@ -25,6 +23,7 @@ vim.o.hidden = true -- can change buffers without saving
 
 
 -- keymaps -----------------------------------------------------------
+vim.g.mapleader = " "
 
 -- file panel
 vim.keymap.set("n","<leader>e",":Lexplore<cr>")
@@ -32,25 +31,25 @@ vim.keymap.set("n","<leader>e",":Lexplore<cr>")
 vim.keymap.set("n","<leader>f",":find ")
 -- diagnostics in the quickfix window
 vim.keymap.set("n", "<leader>d", function()
-	vim.diagnostic.setqflist()
-	vim.cmd("copen")
+    vim.diagnostic.setqflist()
+    vim.cmd("copen")
 end)
 -- grep results in the quickfix window
 vim.keymap.set("n", "<leader>g", function()
-	vim.ui.input({ prompt = "grep: " }, function(pattern)
-		if pattern then
-			vim.cmd("silent grep! " .. vim.fn.fnameescape(pattern))
-			vim.cmd("copen")
-		end
-	end)
+    vim.ui.input({ prompt = "grep: " }, function(pattern)
+        if pattern then
+            vim.cmd("silent grep! " .. vim.fn.fnameescape(pattern))
+            vim.cmd("copen")
+        end
+    end)
 end)
 -- toggle quickfix window
 vim.keymap.set("n","<leader>q",function()
-if vim.fn.getqflist({winid=1}).winid == 0 then
-    vim.cmd("copen")
-else
-    vim.cmd("cclose")
-end
+    if vim.fn.getqflist({winid=1}).winid == 0 then
+        vim.cmd("copen")
+    else
+        vim.cmd("cclose")
+    end
 end)
 -- C-s to save
 vim.keymap.set({ "i", "n" }, "<C-s>",	"<Cmd>w<CR><Esc>")
@@ -85,32 +84,37 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 --------------------------------------------------------------------------------------
 
 -- LSPs
-vim.lsp.enable({"lua_ls","pylsp","rust_analyzer","clangd"});
+vim.lsp.enable({
+    "lua_ls",
+    "pylsp",
+    "rust_analyzer",
+    "clangd",
+})
 
 -- Treesitter Parsers
 require("nvim-treesitter").install({
-  "rust",
-  "python",
-  "json",
-  "toml",
-  "html",
-  "javascript",
+    "rust",
+    "python",
+    "json",
+    "toml",
+    "html",
+    "javascript",
 })
 
 -- diagnostics
 vim.diagnostic.config({virtual_text={
-	current_line=true,
-	virt_text_pos="right_align",
+    current_line=true,
+    virt_text_pos="right_align",
 }})
 
 -- auto completion
 vim.api.nvim_create_autocmd("LspAttach",{
-	callback = function(ev)
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		if client ~= nil and client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true,client.id,ev.buf,{autotrigger=true})
-		end
-	end,
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client ~= nil and client:supports_method("textDocument/completion") then
+            vim.lsp.completion.enable(true,client.id,ev.buf,{autotrigger=true})
+        end
+    end,
 })
 vim.cmd("set completeopt+=noselect") -- don't automatically select the 1st option
 
@@ -127,33 +131,33 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- find ---------------------------------------------------------------------
 local ignore_patterns = {
-	"node_modules",
-	"%.git",
-	"%.cache",
-	"dist",
-	"build",
-	"%.tmp",
-	"%.log",
+    "node_modules",
+    "%.git",
+    "%.cache",
+    "dist",
+    "build",
+    "%.tmp",
+    "%.log",
 }
 
 function _G.native_find(text, _)
-	local files = vim.fn.glob("**/*", true, true)
-	local result = {}
-	for _, f in ipairs(files) do
-		if vim.fn.isdirectory(f) == 0 then
-			local skip = false
-			for _, pat in ipairs(ignore_patterns) do
-				if f:match(pat) then
-					skip = true
-					break
-				end
-			end
-			if not skip then
-				result[#result + 1] = f
-			end
-		end
-	end
-	return vim.fn.matchfuzzy(result, text)
+    local files = vim.fn.glob("**/*", true, true)
+    local result = {}
+    for _, f in ipairs(files) do
+        if vim.fn.isdirectory(f) == 0 then
+            local skip = false
+            for _, pat in ipairs(ignore_patterns) do
+                if f:match(pat) then
+                    skip = true
+                    break
+                end
+            end
+            if not skip then
+                result[#result + 1] = f
+            end
+        end
+    end
+    return vim.fn.matchfuzzy(result, text)
 end
 vim.opt.findfunc = "v:lua.native_find"
 
@@ -164,27 +168,27 @@ vim.opt.findfunc = "v:lua.native_find"
 
 -- Highlight selection on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
-	pattern = "*",
-	desc = "highlight selection on yank",
-	callback = function()
-		vim.highlight.on_yank({ timeout = 200, visual = true })
-	end,
+    group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+    pattern = "*",
+    desc = "highlight selection on yank",
+    callback = function()
+        vim.highlight.on_yank({ timeout = 200, visual = true })
+    end,
 })
 
 -- Restore cursor to file position in previous editing session
 vim.api.nvim_create_autocmd("BufReadPost", {
-	callback = function(args)
-		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
-		local line_count = vim.api.nvim_buf_line_count(args.buf)
-		if mark[1] > 0 and mark[1] <= line_count then
-			vim.api.nvim_win_set_cursor(0, mark)
-			-- defer centering slightly so it's applied after render
-			vim.schedule(function()
-				vim.cmd("normal! zz")
-			end)
-		end
-	end,
+    callback = function(args)
+        local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+        local line_count = vim.api.nvim_buf_line_count(args.buf)
+        if mark[1] > 0 and mark[1] <= line_count then
+            vim.api.nvim_win_set_cursor(0, mark)
+            -- defer centering slightly so it's applied after render
+            vim.schedule(function()
+                vim.cmd("normal! zz")
+            end)
+        end
+    end,
 })
 
 --------------------------------------------------------------------------------------

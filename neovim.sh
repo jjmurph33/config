@@ -4,10 +4,12 @@ sudo mv nvim-linux-x86_64 /opt/nvim
 rm nvim-linux-x86_64.tar.gz
 
 # LSPs
+sudo mkdir /opt/lsp
 # lua
 wget https://github.com/LuaLS/lua-language-server/releases/download/3.19.0/lua-language-server-3.19.0-linux-x64.tar.gz
-tar xf lua-language-server-3.19.0-linux-x64.tar.gz
-sudo mv lua-language-server-3.19.0-linux-x64 /opt/luals
+mkdir luals
+tar xf lua-language-server-3.19.0-linux-x64.tar.gz -C luals
+sudo mv luals /opt/lsp/luals
 rm lua-language-server-3.19.0-linux-x64.tar.gz
 # python
 pip install --break-system-packages python-lsp-server
