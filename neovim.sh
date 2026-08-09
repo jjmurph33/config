@@ -16,10 +16,4 @@ pip install --break-system-packages python-lsp-server
 # rust
 rustup component add rust-analyzer
 
-# Plugins
-mkdir -p $HOME/.local/share/nvim/site/pack/plugins/start
-# treesitter
-cargo install tree-sitter-cli
-cd $HOME/.local/share/nvim/site/pack/plugins/start
-git clone git@github.com:nvim-treesitter/nvim-treesitter.git
 

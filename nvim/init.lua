@@ -83,24 +83,6 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 --------------------------------------------------------------------------------------
 
--- LSPs
-vim.lsp.enable({
-    "lua_ls",
-    "pylsp",
-    "rust_analyzer",
-    "clangd",
-})
-
--- Treesitter Parsers
-require("nvim-treesitter").install({
-    "rust",
-    "python",
-    "json",
-    "toml",
-    "html",
-    "javascript",
-})
-
 -- diagnostics
 vim.diagnostic.config({virtual_text={
     current_line=true,
@@ -193,4 +175,42 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 --------------------------------------------------------------------------------------
 
+-- Plugins---------------------------------------------------------------------------
+vim.pack.add{
+    { src = 'https://github.com/neovim/nvim-lspconfig' },           -- lsp
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter' }, -- treesitter
+    { src = 'https://github.com/lewis6991/gitsigns.nvim' },         -- git
+}
 
+-- LSPs
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+})
+vim.lsp.enable({
+    "lua_ls",        -- lua
+    "pylsp",         -- python
+    "rust_analyzer", -- rust
+    "clangd",        -- c
+})
+
+-- Treesitter Parsers
+require("nvim-treesitter").install({
+    "rust",
+    "python",
+    "json",
+    "toml",
+    "html",
+    "javascript",
+})
