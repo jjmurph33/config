@@ -26,12 +26,7 @@ curl -f https://zed.dev/install.sh | sh
 curl -fsSL https://usagiengine.com/install.sh | sh
 
 #### neovim
-wget https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.tar.gz
-tar xf nvim-linux-x86_64.tar.gz
-sudo mv nvim-linux-x86_64 /opt/nvim
-
-#### treesitter
-cargo install tree-sitter-cli
+sh neovim.sh
 
 #### create symlinks to the config files in this repo
 sh symlinks.sh

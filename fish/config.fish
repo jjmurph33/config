@@ -15,5 +15,5 @@ if status is-interactive
     fish_add_path /opt/nvim/bin
     fish_add_path /opt/usagi/
     fish_add_path /opt/butler/
-    fish_add_path /opt/helix/
+    fish_add_path /opt/lsp/luals/bin
 end
