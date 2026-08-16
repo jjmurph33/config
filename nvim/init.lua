@@ -9,7 +9,6 @@ vim.o.expandtab = true
 vim.o.signcolumn = "yes"
 vim.o.autoread = true
 --vim.o.laststatus = 3
---vim.o.cmdheight = 0
 vim.o.clipboard = "unnamedplus" -- sync yank/put with OS clipboard
 vim.o.breakindent = true
 vim.o.undofile = true -- save undo history
@@ -20,7 +19,14 @@ vim.o.smartcase = true
 --vim.o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.o.autochdir = true  -- auto change directory to current buffer
 vim.o.hidden = true -- can change buffers without saving
+vim.opt.cmdheight = 0 -- only show command line area when needed
 
+-- transparent background
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
 
 -- keymaps -----------------------------------------------------------
 vim.g.mapleader = " "

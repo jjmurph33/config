@@ -12,7 +12,7 @@ tar xf lua-language-server-3.19.0-linux-x64.tar.gz -C luals
 sudo mv luals /opt/lsp/luals
 rm lua-language-server-3.19.0-linux-x64.tar.gz
 # python
-pip install --break-system-packages python-lsp-server
+sudo apt install python3-pylsp
 # rust
 rustup component add rust-analyzer
 
