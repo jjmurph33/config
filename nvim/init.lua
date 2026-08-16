@@ -198,11 +198,21 @@ vim.lsp.config("lua_ls", {
         },
     },
 })
+vim.lsp.config('rust_analyzer', {
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true;
+      }
+    }
+  }
+})
+
 vim.lsp.enable({
-    "lua_ls",        -- lua
-    "pylsp",         -- python
-    "rust_analyzer", -- rust
-    "clangd",        -- c
+    "lua_ls",        -- lua : https://github.com/luals/lua-language-server
+    "pylsp",         -- python : apt install python3-pylsp
+    "rust_analyzer", -- rust : rustup component add rust-analyzer
+    "clangd",        -- c : apt install clangd
 })
 
 -- Treesitter Parsers
