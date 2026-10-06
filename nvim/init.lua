@@ -21,6 +21,10 @@ vim.o.autochdir = true  -- auto change directory to current buffer
 vim.o.hidden = true -- can change buffers without saving
 vim.opt.cmdheight = 0 -- only show command line area when needed
 
+-- how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- transparent background
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
